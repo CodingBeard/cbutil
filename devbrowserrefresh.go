@@ -31,6 +31,11 @@ end tell`)
 				log.Println(e.Error())
 			}
 
+			e = exec.Command("pkill", "-f", "fswatch").Start()
+			if e != nil {
+				log.Println(e.Error())
+			}
+
 			watch := exec.Command(`/bin/bash`, `-c`, `/usr/local/bin/fswatch -e ".*" -i "\\.gohtml$" -o . | xargs -n1 -I {} osascript -e 'tell application "Google Chrome"
 	set window_list to every window # get the windows
 

@@ -7,6 +7,9 @@ import "C"
 import "time"
 
 func Sleep(sleepfor time.Duration) {
+	if sleepfor < 0 {
+		return
+	}
 	if sleepfor < time.Second {
 		C.usleep(C.uint(sleepfor / 1000))
 	} else {

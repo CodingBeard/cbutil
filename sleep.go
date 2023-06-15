@@ -1,3 +1,5 @@
+//go:build cgo
+
 package cbutil
 
 // #include <unistd.h>
